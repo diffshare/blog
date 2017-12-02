@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'Noto Serif CJK JP';
+  font-style: normal;
+  font-weight: 100;
+  src: url(assets/NotoSerifCJKjp-ExtraLight.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Serif CJK JP';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/NotoSerifCJKjp-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Serif CJK JP';
+  font-style: normal;
+  font-weight: 500;
+  src: url(assets/NotoSerifCJKjp-Medium.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Serif CJK JP';
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/NotoSerifCJKjp-Bold.otf) format('opentype');
+}
+
+body {
+  font-size: 1.5em;
+  font-weight: 500;
+  font-feature-settings: "palt" 1;
+  text-align: justify;
+  font-family: 'Noto Serif CJK JP', serif;
+}
+
+p {
+  text-indent: 1em;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
