@@ -34,6 +34,7 @@ body {
   font-feature-settings: "palt" 1;
   text-align: justify;
   font-family: 'Noto Serif CJK JP', serif;
+  padding-bottom: 200px;
 }
 
 p {
