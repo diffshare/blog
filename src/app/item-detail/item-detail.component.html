@@ -1,0 +1,39 @@
+<!--
+<div style="text-align: center;">
+  <a [routerLink]="['/items',id, 'edit']">編集</a>
+</div>
+-->
+<div class="full">
+
+  <div class="header">
+    <div class="menu">
+      <div class="c">
+        <div class="title">
+        {{(item | async)?.name }}<br/>
+        <div class="date">{{(item | async)?.created | date:"yyyy/MM/dd"}}</div>
+        </div>
+      </div>
+      <span class="r">
+        <a (click)="remove()">
+          <fa name="trash"></fa>
+        </a>
+        <a [routerLink]="['edit']">
+          <fa name="pencil"></fa>
+        </a>
+      </span>
+    </div>
+  </div>
+  <div class="content">
+    <perfect-scrollbar>
+      <div class="container">
+        <!--
+        -->
+        <h1>
+          {{ (item | async)?.name }}
+        </h1>
+        <markdown [data]="(item | async)?.content">
+        </markdown>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>

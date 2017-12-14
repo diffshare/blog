@@ -1,0 +1,24 @@
+<div class="full">
+  <div class="left">
+    <div class="header">
+      <button (click)="cancel()">キャンセル</button>
+    </div>
+    <div class="content">
+      <form (ngSubmit)="onSubmit()">
+        <input type="text" [(ngModel)]="name" name="name" placeholder="タイトル"/>
+        <textarea [(ngModel)]="content" name="content" placeholder="内容"></textarea>
+      </form>
+    </div>
+  </div>
+  <div class="right">
+    <div class="header">
+      <button (click)="onSubmit()">反映</button>
+    </div>
+    <div class="content">
+      <div class="container">
+        <h1>{{name}}</h1>
+        <markdown [data]="content"></markdown>
+      </div>
+    </div>
+  </div>
+</div>

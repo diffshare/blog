@@ -1,0 +1,47 @@
+<!--
+<div style="text-align:center">
+  ヘッダ
+  <div *ngIf="afAuth.authState | async; let user; else showLogin">
+    <p>Hello {{ user.displayName }}</p>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <ng-template #showLogin>
+    <p>Plase login.</p>
+    <button (click)="login()">Login with Google</button>
+  </ng-template>
+</div>
+-->
+
+<div class="full">
+  <div class="left">
+    <div class="header">
+      <h2></h2>
+    </div>
+    <div class="content">
+      <ul>
+        <!--
+        <li>
+          <a class="">全ユーザ</a>
+        </li>
+        -->
+        <li *ngIf="afAuth.authState | async; let user; else showLogin">
+          <a class="active">{{ user.displayName }}</a>
+        </li>
+        <li *ngIf="afAuth.authState | async">
+          <a (click)="logout()">Logout</a>
+        </li>
+        <ng-template #showLogin>
+          <li>
+            <a (click)="login()">Login with Google</a>
+          </li>
+          <li>
+            <a (click)="loginTwitter()">Login with Twitter</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>
