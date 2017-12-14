@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Item, ItemService} from '../item.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import {Title} from '@angular/platform-browser';
+import {ItemListComponent} from '../item-list/item-list.component';
 
 @Component({
   selector: 'app-item-detail',
@@ -17,7 +18,8 @@ export class ItemDetailComponent implements OnInit {
   public item: Observable<any>;
   itemValue: Item;
 
-  constructor(private route: ActivatedRoute, protected service: ItemService, private router: Router, private title: Title) {
+  constructor(private route: ActivatedRoute, protected service: ItemService, private router: Router, private title: Title,
+              private itemList: ItemListComponent) {
   }
 
   ngOnInit() {
@@ -41,6 +43,20 @@ export class ItemDetailComponent implements OnInit {
       } catch (e) {
         alert(e);
       }
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  async onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'ArrowDown') {
+      await this.itemList.navigateNext(this.id);
+    }
+    if (event.key === 'ArrowUp') {
+      await this.itemList.navigateBack(this.id);
+    }
+    if (event.key === 'e' && event.ctrlKey) {
+      event.preventDefault();
+      await this.router.navigate(['items', this.id, 'edit']);
     }
   }
 }

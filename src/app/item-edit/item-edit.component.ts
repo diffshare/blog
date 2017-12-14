@@ -1,5 +1,5 @@
 ///<reference path="../../../node_modules/@angular/core/src/metadata/lifecycle_hooks.d.ts"/>
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -46,4 +46,12 @@ export class ItemEditComponent implements OnInit {
     }
   }
 
+  @HostListener('window:keydown', ['$event'])
+  async onKeyDown(event: KeyboardEvent) {
+    console.log(event);
+    if (event.key === 's' && event.ctrlKey) {
+      event.preventDefault();
+      await this.onSubmit();
+    }
+  }
 }

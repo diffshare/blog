@@ -143,3 +143,7 @@ input, textarea, button {
   transition: .2s linear top;
   /* maybe other vendor-prefixed transitions */
 }
+
+table td, table th {
+  border: 1px solid #555 !important;
+}

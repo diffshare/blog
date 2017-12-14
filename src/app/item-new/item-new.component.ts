@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Item, ItemService} from '../item.service';
 import {Router} from '@angular/router';
 
@@ -34,4 +34,12 @@ export class ItemNewComponent implements OnInit {
     }
   }
 
+  @HostListener('window:keydown', ['$event'])
+  async onKeyDown(event: KeyboardEvent) {
+    console.log(event);
+    if (event.key === 's' && event.ctrlKey) {
+      event.preventDefault();
+      await this.onSubmit();
+    }
+  }
 }
