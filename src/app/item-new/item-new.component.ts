@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Item, ItemService} from '../item.service';
 import {Router} from '@angular/router';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-item-new',
@@ -12,14 +13,14 @@ export class ItemNewComponent implements OnInit {
   name: string;
   content: string;
 
-  constructor(private service: ItemService, private router: Router) {
+  constructor(private service: ItemService, private router: Router, private location: Location) {
   }
 
   ngOnInit() {
   }
 
-  async cancel() {
-    await this.router.navigate(['/items']);
+  cancel() {
+    this.location.back();
   }
 
   async onSubmit() {
@@ -40,6 +41,10 @@ export class ItemNewComponent implements OnInit {
     if (event.key === 's' && event.ctrlKey) {
       event.preventDefault();
       await this.onSubmit();
+    }
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      await this.cancel();
     }
   }
 }

@@ -4,6 +4,7 @@ import {AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ItemService} from '../item.service';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-item-edit',
@@ -18,7 +19,7 @@ export class ItemEditComponent implements OnInit {
   content: string;
   id: string;
 
-  constructor(private route: ActivatedRoute, protected service: ItemService, private router: Router) {
+  constructor(private route: ActivatedRoute, protected service: ItemService, private router: Router, private location: Location) {
   }
 
   async ngOnInit() {
@@ -34,7 +35,7 @@ export class ItemEditComponent implements OnInit {
   }
 
   async cancel() {
-    await this.router.navigate(['/items', this.id]);
+    this.location.back();
   }
 
   async onSubmit() {
@@ -52,6 +53,10 @@ export class ItemEditComponent implements OnInit {
     if (event.key === 's' && event.ctrlKey) {
       event.preventDefault();
       await this.onSubmit();
+    }
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      await this.cancel();
     }
   }
 }

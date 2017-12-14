@@ -48,15 +48,20 @@ export class ItemDetailComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   async onKeyDown(event: KeyboardEvent) {
+    console.log(event);
     if (event.key === 'ArrowDown') {
       await this.itemList.navigateNext(this.id);
     }
     if (event.key === 'ArrowUp') {
       await this.itemList.navigateBack(this.id);
     }
-    if (event.key === 'e' && event.ctrlKey) {
+    if (event.key === 'e') {
       event.preventDefault();
       await this.router.navigate(['items', this.id, 'edit']);
+    }
+    if (event.key === 'n') {
+      event.preventDefault();
+      await this.router.navigate(['items', 'new']);
     }
   }
 }
