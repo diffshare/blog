@@ -42,5 +42,3 @@ Thumbs.db
 
 # firebase
 **/.firebaserc
-environment.prod.ts
-environment.ts
