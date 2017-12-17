@@ -55,6 +55,10 @@ p {
   line-height: 1.8;
 }
 
+markdown li {
+  line-height: 1.6;
+}
+
 a {
   color: inherit;
 }
