@@ -14,7 +14,7 @@
     <div class="content">
       <perfect-scrollbar>
         <ul>
-          <li *ngFor="let item of items | async">
+          <li class="list-item" *ngFor="let item of items | async">
             <a [routerLinkActive]="['active']" [routerLink]="['/items',item.id]">{{ item.name }}
               <div class="date">{{ item.created | date:'yyyy/MM/dd' }}</div>
             </a>
