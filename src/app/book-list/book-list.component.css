@@ -1,0 +1,13 @@
+.books {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.books li {
+  width: 200px;
+  margin: 20px;
+}
+
+.books img {
+  width: 200px;
+}

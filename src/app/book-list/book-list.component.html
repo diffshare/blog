@@ -1,0 +1,14 @@
+<p>
+  book-list works!
+</p>
+<form (submit)="search()">
+  <input type="text" placeholder="本の検索" [(ngModel)]="query" name="query"/>
+  <button (click)="search()">検索</button>
+</form>
+
+<ul class="books">
+  <li *ngFor="let book of (result | async)?.items">
+    <img [src]="book.volumeInfo.imageLinks.thumbnail | thumbnail"/>
+    <div class="title">{{book.volumeInfo.title}}</div>
+  </li>
+</ul>

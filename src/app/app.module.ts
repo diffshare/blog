@@ -17,6 +17,9 @@ import {ItemHomeComponent} from './item-home/item-home.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ItemNewComponent} from './item-new/item-new.component';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import { BookListComponent } from './book-list/book-list.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ThumbnailPipe } from './thumbnail.pipe';
 
 const appRoutes: Routes = [
   {
@@ -27,6 +30,9 @@ const appRoutes: Routes = [
       {path: ':id', component: ItemDetailComponent},
       {path: '', component: ItemHomeComponent}
     ]
+  },
+  {
+    path: 'books', component: BookListComponent
   },
   {path: '', redirectTo: 'items', pathMatch: 'full'}
 ];
@@ -43,12 +49,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ItemEditComponent,
     HomeComponent,
     ItemHomeComponent,
-    ItemNewComponent
+    ItemNewComponent,
+    BookListComponent,
+    ThumbnailPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
     FormsModule,
+    HttpClientModule,
     MarkdownModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
